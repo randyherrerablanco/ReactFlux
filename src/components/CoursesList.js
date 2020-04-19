@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 function CoursesList(props) {
   return (
     <>
-      <h2>Courses</h2>
       <table className="table">
         <thead>
           <tr>

@@ -1,15 +1,63 @@
-import React from "react";
-import { Prompt } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+// import { Prompt } from "react-router-dom";
+import CourseForm from "./CourseForm";
+import * as courseApi from "../api/courseApi";
+import { toast } from "react-toastify";
 
 function ManageCoursePage(props) {
+  const [errors, setErrors] = useState({});
+  const [course, setCourse] = useState({
+    id: null,
+    slug: "",
+    title: "",
+    authorId: null,
+    category: "",
+  });
+
+  useEffect(() => {
+    const id = props.match.params.id;
+    if (id) {
+      courseApi.getCourseById(id).then((_course) => setCourse(_course));
+    }
+  }, [props.match.params.id]);
+
+  function handleChange({ target }) {
+    setCourse({ ...course, [target.name]: target.value });
+  }
+
+  function formIsValid() {
+    const _errors = {};
+
+    if (!course.title) _errors.title = "Title is required";
+    if (!course.authorId) _errors.authorId = "Author Id is required";
+    if (!course.category) _errors.category = "Category is required";
+
+    setErrors(_errors);
+    return Object.keys(_errors).length === 0;
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    if (!formIsValid()) return;
+    courseApi.saveCourse(course).then(() => {
+      props.history.push("/courses");
+      toast.success("Course saved.");
+    });
+  }
+
   return (
     <>
       <h2>Manage Course</h2>
-      <Prompt
+      {/* <Prompt
         when={true}
         message="Esta seguro que desea salir de esta paguina??"
+      /> */}
+      <CourseForm
+        errors={errors}
+        course={course}
+        onChange={handleChange}
+        onSubmit={handleSubmit}
       />
-      <p>{props.match.params.slug}</p>
     </>
   );
 }
