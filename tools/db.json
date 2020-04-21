@@ -1,17 +1,10 @@
 {
   "courses": [
     {
-      "id": 1,
-      "title": "Securing React Apps with Auth0",
-      "slug": "react-auth0-authentication-security",
-      "authorId": 2,
-      "category": "JavaScript"
-    },
-    {
       "id": 2,
       "title": "React: The Big Picture",
       "slug": "react-big-picture",
-      "authorId": 2,
+      "authorId": 1,
       "category": "JavaScript"
     },
     {
@@ -30,7 +23,7 @@
     },
     {
       "id": 5,
-      "title": "Building Applications with React and Redux",
+      "title": "Building Applications with React and Redux1",
       "slug": "react-redux-react-router-es6",
       "authorId": 1,
       "category": "JavaScript"
@@ -54,7 +47,7 @@
       "title": "Architecting Applications for the Real World",
       "slug": "architecting-applications-dotnet",
       "authorId": 1,
-      "category": "Software Architecture"
+      "category": "Software Architecture 1"
     },
     {
       "id": 9,
@@ -69,14 +62,6 @@
       "slug": "web-components-shadow-dom",
       "authorId": 1,
       "category": "HTML5"
-    },
-    {
-      "id": 11,
-      "slug": "asds",
-      "title": "asds",
-      "authorId": 1,
-      "category": "asd",
-      "createdAt": 1587323123166
     }
   ],
   "authors": [
